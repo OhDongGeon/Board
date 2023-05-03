@@ -35,7 +35,7 @@
 <br>
 
 ## ERD
-![20230502-게시판-ERD](https://user-images.githubusercontent.com/121795660/235571487-a0f2fa93-f6c2-48d6-8ea7-f48cf2486ba2.png)
+![20230503-게시판-ERD](https://user-images.githubusercontent.com/121795660/235925275-904cfaf4-a987-4a4d-a267-33bfedee4b61.png)
 <br>
 
 ## 후기
