@@ -2,8 +2,13 @@
 사용자간 소통할 수 있는 게시판 개발
 
 ## 프로젝트 기간
+<<<<<<< HEAD
 * 2022.05.02 ~
   <br>
+=======
+* 2022.05.02 ~ 
+<br>
+>>>>>>> origin/main
 
 ## 프로젝트 기능
 ### 회원가입 :black_square_button:
@@ -25,17 +30,28 @@
 * 로그인 여부 없이 조회가 가능하다.
 ### 댓글 작성 :black_square_button:
 * 로그인을 진행해야 작성할 수 있다.
+<<<<<<< HEAD
   <br>
+=======
+<br>
+>>>>>>> origin/main
 
 ## 사용 기술스택
 * Spring boot 2.7.11, Java jdk 11, Gradle
 * MySql
 * Spring Web, Spring Security, JPA, Lombok
 * IntelliJ, MySql Workbench, erdcloud
+<<<<<<< HEAD
   <br>
 
 ## ERD
 ![ERD](ERD/BoardErd.png)
+=======
+<br>
+
+## ERD
+![20230503-게시판-ERD](https://user-images.githubusercontent.com/121795660/235953282-c4e85cfa-894a-455e-9333-0cfef3a5a76d.png)
+>>>>>>> origin/main
 <br>
 
 ## 후기
