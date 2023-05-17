@@ -18,14 +18,13 @@ public class UserDto {
         private String loginId;
         private String userNickName;
         private String userPassword;
-        private String userRank;
 
         public User save(SignUp signUp) {
             return User.builder()
                 .loginId(signUp.getLoginId())
                 .userNickName(signUp.getUserNickName())
                 .userPassword(signUp.getUserPassword())
-                .userRank(signUp.getUserRank())
+                .userRank(1)
                 .build();
         }
     }
@@ -34,6 +33,7 @@ public class UserDto {
     @Getter
     @Setter
     public static class SignIn {
+
         private String loginId;
         private String userPassword;
     }

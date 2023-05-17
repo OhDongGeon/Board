@@ -15,7 +15,7 @@ public class TokenProvider {
     private String secretKey;
 
 
-    public String createToken(String loginId, String userRank) {
+    public String createToken(String loginId, int userRank) {
         Claims claims = Jwts.claims().setSubject(loginId);
         claims.put("roles", userRank);
 

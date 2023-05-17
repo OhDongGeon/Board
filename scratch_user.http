@@ -5,8 +5,7 @@ Content-Type: application/json
 {
   "loginId": "중복확인",
   "userNickName": "닉네임",
-  "userPassword": "159",
-  "userRank": "0"
+  "userPassword": "159"
 }
 
 

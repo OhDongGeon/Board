@@ -30,6 +30,5 @@ public class User extends BaseEntity {
     private String userNickName;
     @Column(columnDefinition = "VARCHAR(255) NOT NULL")
     private String userPassword;
-    @Column(columnDefinition = "VARCHAR(10) NOT NULL")
-    private String userRank;
+    private int userRank;
 }
