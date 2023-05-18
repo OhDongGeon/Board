@@ -6,16 +6,16 @@
   <br>
 
 ## 프로젝트 기능
-### 회원가입 :black_square_button:
+### 회원가입 :ballot_box_with_check:
 * 회원가입을 진행할 수 있다.
 * 아이디, 닉네임, 비밀번호를 입력 받는다.
-* 등급은 0부터 5까지 있으며, 0은 관리자 1부터 5까지는 회원으로 회원가입 시 1로 자동 등록된다.
+* 회원 등급은 LEVEL1부터 LEVEL5까지 관리자 등급은 ADMIN 회원가입시 회원은 LEVEL1 관리자는 ADMIN 자동 등록 된다.
 
 ### 등업기준 :black_square_button:
 * 각 등업 기준을 등록한다.
 * 게시글, 댓글 등록 시 자동 등업 여부에 따라 자동으로 등업을 시키거나 관리자가 확인 후 등업 시킨다.
 
-### 로그인 :black_square_button:
+### 로그인 :ballot_box_with_check:
 * 아이디, 비밀번호가 일치해야 한다.
 
 ### 게시판분류 조회 :black_square_button:
