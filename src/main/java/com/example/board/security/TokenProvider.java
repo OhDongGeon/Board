@@ -1,5 +1,6 @@
 package com.example.board.security;
 
+import com.example.board.domain.type.RankType;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -15,7 +16,7 @@ public class TokenProvider {
     private String secretKey;
 
 
-    public String createToken(String loginId, int userRank) {
+    public String createToken(String loginId, RankType userRank) {
         Claims claims = Jwts.claims().setSubject(loginId);
         claims.put("roles", userRank);
 

@@ -1,0 +1,33 @@
+### 관리자 회원가입
+POST http://localhost:8080/signup/admin
+Content-Type: application/json
+
+{
+  "loginId": "관리자",
+  "userNickName": "첫번째 관리자",
+  "userPassword": "1234"
+}
+
+
+
+### 회원 회원가입
+POST http://localhost:8080/signup/user
+Content-Type: application/json
+
+{
+  "loginId": "회원",
+  "userNickName": "회원1",
+  "userPassword": "1111"
+}
+
+
+### 로그인
+POST http://localhost:8080/signin
+Content-Type: application/json
+
+{
+  "loginId": "관리자",
+  "userPassword": "1234"
+}
+
+

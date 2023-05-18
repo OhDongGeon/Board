@@ -1,7 +1,10 @@
 package com.example.board.domain.entity;
 
+import com.example.board.domain.type.RankType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,5 +33,8 @@ public class User extends BaseEntity {
     private String userNickName;
     @Column(columnDefinition = "VARCHAR(255) NOT NULL")
     private String userPassword;
-    private int userRank;
+
+    @Column(columnDefinition = "VARCHAR(10) NOT NULL")
+    @Enumerated(EnumType.STRING)
+    private RankType userRank;
 }

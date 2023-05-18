@@ -1,6 +1,8 @@
 package com.example.board.domain.dto;
 
 import com.example.board.domain.entity.User;
+import com.example.board.domain.type.RankType;
+import com.example.board.domain.type.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,12 +21,17 @@ public class UserDto {
         private String userNickName;
         private String userPassword;
 
-        public User save(SignUp signUp) {
+        public User save(SignUp signUp, UserType userType) {
+            RankType rankType = RankType.LEVEL1;
+            if (userType.equals(UserType.ADMIN)) {
+                rankType = RankType.ADMIN;
+            }
+
             return User.builder()
                 .loginId(signUp.getLoginId())
                 .userNickName(signUp.getUserNickName())
                 .userPassword(signUp.getUserPassword())
-                .userRank(1)
+                .userRank(rankType)
                 .build();
         }
     }
@@ -37,5 +44,4 @@ public class UserDto {
         private String loginId;
         private String userPassword;
     }
-
 }
