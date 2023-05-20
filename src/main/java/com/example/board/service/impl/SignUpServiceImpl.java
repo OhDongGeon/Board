@@ -2,9 +2,6 @@ package com.example.board.service.impl;
 
 import static com.example.board.exception.ErrorCode.ALREADY_LOGIN_ID;
 import static com.example.board.exception.ErrorCode.ALREADY_NICK_NAME;
-import static com.example.board.exception.ErrorCode.BLANK_LOGIN_ID;
-import static com.example.board.exception.ErrorCode.BLANK_NICK_NAME;
-import static com.example.board.exception.ErrorCode.BLANK_PASSWORD;
 
 import com.example.board.domain.dto.UserDto;
 import com.example.board.domain.repository.UserRepository;
@@ -29,22 +26,13 @@ public class SignUpServiceImpl implements SignUpService {
     @Transactional
     public String signUp(UserDto.SignUp signUp, UserType userType) {
         // 아이디 확인
-        if (signUp.getLoginId().equals("")) {
-            throw new GlobalException(BLANK_LOGIN_ID);
-        } else if (userRepository.existsByLoginId(signUp.getLoginId())) {
+        if (userRepository.existsByLoginId(signUp.getLoginId())) {
             throw new GlobalException(ALREADY_LOGIN_ID);
         }
 
         // 닉네임 확인
-        if (signUp.getUserNickName().equals("")) {
-            throw new GlobalException(BLANK_NICK_NAME);
-        } else if (userRepository.existsByUserNickName(signUp.getUserNickName())) {
+        if (userRepository.existsByUserNickName(signUp.getUserNickName())) {
             throw new GlobalException(ALREADY_NICK_NAME);
-        }
-
-        // 비밀번호 확인
-        if (signUp.getUserPassword().equals("")) {
-            throw new GlobalException(BLANK_PASSWORD);
         }
 
         signUp.setUserPassword(passwordEncoder.encode(signUp.getUserPassword()));
