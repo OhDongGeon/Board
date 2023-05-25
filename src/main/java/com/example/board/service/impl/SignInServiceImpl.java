@@ -1,7 +1,5 @@
 package com.example.board.service.impl;
 
-import static com.example.board.exception.ErrorCode.BLANK_LOGIN_ID;
-import static com.example.board.exception.ErrorCode.BLANK_PASSWORD;
 import static com.example.board.exception.ErrorCode.NOT_FIND_LOGIN_ID;
 import static com.example.board.exception.ErrorCode.WRONG_LOGIN_PASSWORD;
 
@@ -27,15 +25,6 @@ public class SignInServiceImpl implements SignInService {
 
     // 로그인
     public String signIn(UserDto.SignIn signIn) {
-
-        // 입력값 확인
-        if (signIn.getLoginId().equals("")) {
-            throw new GlobalException(BLANK_LOGIN_ID);
-        }
-        if (signIn.getUserPassword().equals("")) {
-            throw new GlobalException(BLANK_PASSWORD);
-        }
-
         User user = userRepository.findByLoginId(signIn.getLoginId())
             .orElseThrow(() -> new GlobalException(NOT_FIND_LOGIN_ID));
 
@@ -43,6 +32,6 @@ public class SignInServiceImpl implements SignInService {
             throw new GlobalException(WRONG_LOGIN_PASSWORD);
         }
 
-        return tokenProvider.createToken(user.getLoginId(), user.getUserRank());
+        return tokenProvider.createToken(user.getUserId(), user.getLoginId(), user.getUserRank());
     }
 }
