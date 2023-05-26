@@ -1,8 +1,8 @@
 package com.example.board.controller;
 
-import com.example.board.domain.dto.RankUpStandardDto.AddRankUpStandard;
-import com.example.board.domain.dto.RankUpStandardDto.ModifyRankUpStandard;
 import com.example.board.domain.dto.RankUpStandardDto.SearchRankUpStandard;
+import com.example.board.domain.form.RankUpStandardForm.AddRankUpStandard;
+import com.example.board.domain.form.RankUpStandardForm.ModifyRankUpStandard;
 import com.example.board.security.TokenProvider;
 import com.example.board.service.RankUpStandardService;
 import java.util.List;
@@ -32,11 +32,9 @@ public class RankUpStandardController {
 
     // 조회
     @GetMapping("/search")
-    public ResponseEntity<List<SearchRankUpStandard>> searchRankUpStandard(
-        @RequestHeader(name = TOKEN_HEADER) String token) {
+    public ResponseEntity<List<SearchRankUpStandard>> searchRankUpStandard() {
 
-        return ResponseEntity.ok(rankUpStandardService.searchRankUpStandard(
-            tokenProvider.getTokenUserId(token), true));
+        return ResponseEntity.ok(rankUpStandardService.searchRankUpStandard());
     }
 
 

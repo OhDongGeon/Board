@@ -1,18 +1,17 @@
 ### 등업 기준 조회
 GET http://localhost:8080/rankup/search
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg0OTg0OTMwLCJleHAiOjE2ODUwNzEzMzB9.Ofe3rv-8sPzEkkJf4S5BOuqpr7eqhcTHvU2RPKkkXKKwrN1oTRpWx7_TSZPgCWmr28UrY_ELPYk7LqZpVg4Eew
 
 
 ### 등업 기준 저장
 POST http://localhost:8080/rankup/add
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg0OTg0OTMwLCJleHAiOjE2ODUwNzEzMzB9.Ofe3rv-8sPzEkkJf4S5BOuqpr7eqhcTHvU2RPKkkXKKwrN1oTRpWx7_TSZPgCWmr28UrY_ELPYk7LqZpVg4Eew
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1MDgyMjU2LCJleHAiOjE2ODUxNjg2NTZ9.ZybLOZa-r3HWfaqvxnbX1rTXoW94NROXqDlPAu5JwflYZyyH-t32sOfP2loKXynyv9qFweTtvpmTldDKkDwZ2w
 
 {
   "rankName": "LEVEL3",
-  "boardCount": 3,
-  "commentCount": 3,
+  "boardCount": 10,
+  "commentCount": 10,
   "autoRankUpFlag": true
 }
 
@@ -20,7 +19,7 @@ USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxR
 ### 등업 기준 수정
 PUT http://localhost:8080/rankup/modify/2
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiI4Y21vdWphU2EzNmpkeHltdWZHRC9YRHFCVW5PNlI3U1EyY0VUSEpsczdBPSIsInJvbGVzIjoiQURNSU4iLCJpYXQiOjE2ODQ5MjU0MDgsImV4cCI6MTY4NTAxMTgwOH0.1Taliqx3wnWIWJ4BlO3PYLWx1dv2qWyihXCNsYTDhw02H9ka5-X2sAWKjDMGTRhNg6JuZGmVEvxXUVg3POqsbQ
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1MDgyMDM1LCJleHAiOjE2ODUxNjg0MzV9.X1Y2m6D8MTgtW0A3hxXpJeB-G0e70JAehEldesN1JryhwsGr97r3-Yl6jlVPqE-1GRV1srkm6dWcrHwjTOl9bQ
 
 {
   "boardCount": 10,
@@ -30,7 +29,6 @@ USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxR
 
 
 ### 등업 기준 삭제
-DELETE http://localhost:8080/rankup/delete/3
+DELETE http://localhost:8080/rankup/delete/1
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiI4Y21vdWphU2EzNmpkeHltdWZHRC9YRHFCVW5PNlI3U1EyY0VUSEpsczdBPSIsInJvbGVzIjoiQURNSU4iLCJpYXQiOjE2ODQ5MjU0MDgsImV4cCI6MTY4NTAxMTgwOH0.1Taliqx3wnWIWJ4BlO3PYLWx1dv2qWyihXCNsYTDhw02H9ka5-X2sAWKjDMGTRhNg6JuZGmVEvxXUVg3POqsbQ
-
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1MDgyMjU2LCJleHAiOjE2ODUxNjg2NTZ9.ZybLOZa-r3HWfaqvxnbX1rTXoW94NROXqDlPAu5JwflYZyyH-t32sOfP2loKXynyv9qFweTtvpmTldDKkDwZ2w

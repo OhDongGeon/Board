@@ -1,15 +1,15 @@
 package com.example.board.service;
 
-import com.example.board.domain.dto.RankUpStandardDto.AddRankUpStandard;
-import com.example.board.domain.dto.RankUpStandardDto.ModifyRankUpStandard;
 import com.example.board.domain.dto.RankUpStandardDto.SearchRankUpStandard;
+import com.example.board.domain.form.RankUpStandardForm.AddRankUpStandard;
+import com.example.board.domain.form.RankUpStandardForm.ModifyRankUpStandard;
 import java.util.List;
 
 
 public interface RankUpStandardService {
 
     // 조회
-    List<SearchRankUpStandard> searchRankUpStandard(Long userId, boolean userTypeCheck);
+    List<SearchRankUpStandard> searchRankUpStandard();
 
 
     // 저장

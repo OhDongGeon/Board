@@ -7,11 +7,11 @@ import static com.example.board.exception.ErrorCode.NOT_FIND_RANK;
 import static com.example.board.exception.ErrorCode.OVER_RANK_CHECK_BOARD_COMMENT;
 import static com.example.board.exception.ErrorCode.UNDER_RANK_CHECK_BOARD_COMMENT;
 
-import com.example.board.domain.dto.RankUpStandardDto.AddRankUpStandard;
-import com.example.board.domain.dto.RankUpStandardDto.ModifyRankUpStandard;
 import com.example.board.domain.dto.RankUpStandardDto.SearchRankUpStandard;
 import com.example.board.domain.entity.RankUpStandard;
 import com.example.board.domain.entity.User;
+import com.example.board.domain.form.RankUpStandardForm.AddRankUpStandard;
+import com.example.board.domain.form.RankUpStandardForm.ModifyRankUpStandard;
 import com.example.board.domain.repository.RankUpStandardRepository;
 import com.example.board.domain.type.RankType;
 import com.example.board.exception.GlobalException;
@@ -33,11 +33,7 @@ public class RankUpStandardImpl implements RankUpStandardService {
 
 
     // 조회
-    public List<SearchRankUpStandard> searchRankUpStandard(Long userId, boolean userTypeCheck) {
-
-        if (userTypeCheck) {
-            userTypeCheckService.userTypeAdmin(userId);
-        }
+    public List<SearchRankUpStandard> searchRankUpStandard() {
 
         List<SearchRankUpStandard> infoRankUpStandards = new ArrayList<>();
 
@@ -64,7 +60,8 @@ public class RankUpStandardImpl implements RankUpStandardService {
 
         if (rankUpStandardRepository.existsByRankName(addRankUpStandard.getRankName())) {
             throw new GlobalException(ALREADY_RANK);
-        } else if (addRankUpStandard.getRankName().equals(ADMIN)) {
+        }
+        if (addRankUpStandard.getRankName().equals(ADMIN)) {
             throw new GlobalException(NOT_ADD_RANK);
         }
 
@@ -74,10 +71,16 @@ public class RankUpStandardImpl implements RankUpStandardService {
 
         User user = userTypeCheckService.userTypeAdmin(userId);
 
-        RankUpStandard rankUpStandard = addRankUpStandard.save(addRankUpStandard);
+        RankUpStandard rankUpStandard = RankUpStandard.builder()
+            .rankName(addRankUpStandard.getRankName())
+            .boardCount(addRankUpStandard.getBoardCount())
+            .commentCount(addRankUpStandard.getCommentCount())
+            .autoRankUpFlag(addRankUpStandard.isAutoRankUpFlag())
+            .build();
+
         user.getRankUpStandards().add(rankUpStandard);
 
-        return searchRankUpStandard(userId, false);
+        return searchRankUpStandard();
     }
 
 
@@ -100,7 +103,7 @@ public class RankUpStandardImpl implements RankUpStandardService {
         rankUpStandard.setAutoRankUpFlag(modifyRankUpStandard.isAutoRankUpFlag());
         user.getRankUpStandards().add(rankUpStandard);
 
-        return searchRankUpStandard(userId, false);
+        return searchRankUpStandard();
     }
 
 
@@ -115,7 +118,7 @@ public class RankUpStandardImpl implements RankUpStandardService {
 
         rankUpStandardRepository.delete(rankUpStandard);
 
-        return searchRankUpStandard(userId, false);
+        return searchRankUpStandard();
     }
 
 

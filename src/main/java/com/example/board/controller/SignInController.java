@@ -1,6 +1,6 @@
 package com.example.board.controller;
 
-import com.example.board.domain.dto.UserDto;
+import com.example.board.domain.form.UserForm.SignIn;
 import com.example.board.service.SignInService;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,8 @@ public class SignInController {
 
     // 로그인
     @PostMapping("/signin")
-    public ResponseEntity<String> memberSignIn(@RequestBody @Valid UserDto.SignIn signIn) {
+    public ResponseEntity<String> memberSignIn(@RequestBody @Valid SignIn signIn) {
+
         return ResponseEntity.ok(signInService.signIn(signIn));
     }
 }
