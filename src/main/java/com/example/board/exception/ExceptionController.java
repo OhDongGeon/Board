@@ -17,6 +17,7 @@ public class ExceptionController {
     @ExceptionHandler(GlobalException.class)
     public ResponseEntity<ExceptionResponse> globalRequestException(
         final GlobalException globalException) {
+
         return ResponseEntity.badRequest().body(
             new ExceptionResponse(globalException.getMessage(), globalException.getErrorCode()));
     }
@@ -28,7 +29,7 @@ public class ExceptionController {
         final MethodArgumentNotValidException methodArgumentNotValidException) {
 
         ObjectError objectError = methodArgumentNotValidException.getBindingResult()
-                                        .getAllErrors().get(0);
+            .getAllErrors().get(0);
 
         return ResponseEntity.badRequest().body(
             new ExceptionResponse(objectError.getDefaultMessage(),
