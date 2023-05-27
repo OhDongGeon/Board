@@ -7,18 +7,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CategoryDto {
 
-    @Getter
-    @Setter
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class SearchCategory {
-
-        private Long categoryId;
-        private String categoryTitle;
-        private RankType categoryRank;
-        private boolean categoryUesFlag;
-    }
+    private Long categoryId;
+    private String categoryTitle;
+    private RankType categoryRank;
+    private boolean categoryUesFlag;
 }

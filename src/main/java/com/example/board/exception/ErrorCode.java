@@ -29,6 +29,7 @@ public enum ErrorCode {
 
 
     // 게시판 분류 관련
+    REGISTERED_RANK_CATEGORY("해당 등급에 등록된 게시판 분류가 있습니다."),
     NOT_FIND_CATEGORY("존재하지 않는 게시판 분류 입니다.");
 
 

@@ -1,6 +1,6 @@
 package com.example.board.controller;
 
-import com.example.board.domain.dto.RankUpStandardDto.SearchRankUpStandard;
+import com.example.board.domain.dto.RankUpStandardDto;
 import com.example.board.domain.form.RankUpStandardForm.AddRankUpStandard;
 import com.example.board.domain.form.RankUpStandardForm.ModifyRankUpStandard;
 import com.example.board.security.TokenProvider;
@@ -32,7 +32,7 @@ public class RankUpStandardController {
 
     // 조회
     @GetMapping("/search")
-    public ResponseEntity<List<SearchRankUpStandard>> searchRankUpStandard() {
+    public ResponseEntity<List<RankUpStandardDto>> searchRankUpStandard() {
 
         return ResponseEntity.ok(rankUpStandardService.searchRankUpStandard());
     }
@@ -40,7 +40,7 @@ public class RankUpStandardController {
 
     // 저장
     @PostMapping("/add")
-    public ResponseEntity<List<SearchRankUpStandard>> addRankUpStandard(
+    public ResponseEntity<List<RankUpStandardDto>> addRankUpStandard(
         @RequestHeader(name = TOKEN_HEADER) String token,
         @RequestBody @Valid AddRankUpStandard addRankUpStandard) {
 
@@ -51,7 +51,7 @@ public class RankUpStandardController {
 
     // 수정
     @PutMapping("/modify/{standardId}")
-    public ResponseEntity<List<SearchRankUpStandard>> modifyRankUpStandard(
+    public ResponseEntity<List<RankUpStandardDto>> modifyRankUpStandard(
         @RequestHeader(name = TOKEN_HEADER) String token,
         @PathVariable("standardId") Long standardId,
         @RequestBody @Valid ModifyRankUpStandard modifyRankUpStandard) {
@@ -63,7 +63,7 @@ public class RankUpStandardController {
 
     // 삭제
     @DeleteMapping("/delete/{standardId}")
-    public ResponseEntity<List<SearchRankUpStandard>> deleteRankUpStandard(
+    public ResponseEntity<List<RankUpStandardDto>> deleteRankUpStandard(
         @RequestHeader(name = TOKEN_HEADER) String token,
         @PathVariable("standardId") Long standardId) {
 

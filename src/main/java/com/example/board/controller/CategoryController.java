@@ -1,7 +1,7 @@
 package com.example.board.controller;
 
-import com.example.board.domain.dto.CategoryDto.SearchCategory;
-import com.example.board.domain.form.CategoryForm.MergeCategory;
+import com.example.board.domain.dto.CategoryDto;
+import com.example.board.domain.form.CategoryForm;
 import com.example.board.security.TokenProvider;
 import com.example.board.service.CategoryService;
 import java.util.List;
@@ -31,7 +31,7 @@ public class CategoryController {
 
     // 조회
     @GetMapping("/search")
-    public ResponseEntity<List<SearchCategory>> searchCategory() {
+    public ResponseEntity<List<CategoryDto>> searchCategory() {
 
         return ResponseEntity.ok(categoryService.searchCategory());
     }
@@ -39,30 +39,30 @@ public class CategoryController {
 
     // 저장
     @PostMapping("/add")
-    public ResponseEntity<List<SearchCategory>> addCategory(
+    public ResponseEntity<List<CategoryDto>> addCategory(
         @RequestHeader(name = TOKEN_HEADER) String token,
-        @RequestBody @Valid MergeCategory mergeCategory) {
+        @RequestBody @Valid CategoryForm categoryForm) {
 
         return ResponseEntity.ok(categoryService.addCategory(
-            tokenProvider.getTokenUserId(token), mergeCategory));
+            tokenProvider.getTokenUserId(token), categoryForm));
     }
 
 
     // 수정
     @PutMapping("/modify/{categoryId}")
-    public ResponseEntity<List<SearchCategory>> modifyCategory(
+    public ResponseEntity<List<CategoryDto>> modifyCategory(
         @RequestHeader(name = TOKEN_HEADER) String token,
         @PathVariable("categoryId") Long categoryId,
-        @RequestBody @Valid MergeCategory mergeCategory) {
+        @RequestBody @Valid CategoryForm categoryForm) {
 
         return ResponseEntity.ok(categoryService.modifyCategory(
-            tokenProvider.getTokenUserId(token), categoryId, mergeCategory));
+            tokenProvider.getTokenUserId(token), categoryId, categoryForm));
     }
 
 
     // 삭제
     @DeleteMapping("/delete/{categoryId}")
-    public ResponseEntity<List<SearchCategory>> deleteCategory(
+    public ResponseEntity<List<CategoryDto>> deleteCategory(
         @RequestHeader(name = TOKEN_HEADER) String token,
         @PathVariable("categoryId") Long categoryId) {
 

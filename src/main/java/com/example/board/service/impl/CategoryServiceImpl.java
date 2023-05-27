@@ -3,10 +3,10 @@ package com.example.board.service.impl;
 import static com.example.board.exception.ErrorCode.NOT_FIND_CATEGORY;
 import static com.example.board.exception.ErrorCode.UNREGISTERED_RANK;
 
-import com.example.board.domain.dto.CategoryDto.SearchCategory;
+import com.example.board.domain.dto.CategoryDto;
 import com.example.board.domain.entity.Category;
 import com.example.board.domain.entity.User;
-import com.example.board.domain.form.CategoryForm.MergeCategory;
+import com.example.board.domain.form.CategoryForm;
 import com.example.board.domain.repository.CategoryRepository;
 import com.example.board.domain.repository.RankUpStandardRepository;
 import com.example.board.exception.GlobalException;
@@ -29,12 +29,12 @@ public class CategoryServiceImpl implements CategoryService {
 
 
     // 조회
-    public List<SearchCategory> searchCategory() {
+    public List<CategoryDto> searchCategory() {
 
-        List<SearchCategory> categories = new ArrayList<>();
+        List<CategoryDto> categories = new ArrayList<>();
 
         for (Category category : categoryRepository.findAllByOrderByCategoryRank()) {
-            SearchCategory searchCategory = SearchCategory.builder()
+            CategoryDto searchCategory = CategoryDto.builder()
                 .categoryId(category.getCategoryId())
                 .categoryTitle(category.getCategoryTitle())
                 .categoryRank(category.getCategoryRank())
@@ -50,18 +50,18 @@ public class CategoryServiceImpl implements CategoryService {
 
     // 저장
     @Transactional
-    public List<SearchCategory> addCategory(Long userId, MergeCategory mergeCategory) {
+    public List<CategoryDto> addCategory(Long userId, CategoryForm categoryForm) {
 
-        if (!rankUpStandardRepository.existsByRankName(mergeCategory.getCategoryRank())) {
+        if (!rankUpStandardRepository.existsByRankName(categoryForm.getCategoryRank())) {
             throw new GlobalException(UNREGISTERED_RANK);
         }
 
         User user = userTypeCheckService.userTypeAdmin(userId);
 
         Category category = Category.builder()
-            .categoryTitle(mergeCategory.getCategoryTitle())
-            .categoryRank(mergeCategory.getCategoryRank())
-            .categoryUesFlag(mergeCategory.isCategoryUesFlag())
+            .categoryTitle(categoryForm.getCategoryTitle())
+            .categoryRank(categoryForm.getCategoryRank())
+            .categoryUesFlag(categoryForm.isCategoryUesFlag())
             .build();
 
         user.getCategories().add(category);
@@ -72,10 +72,10 @@ public class CategoryServiceImpl implements CategoryService {
 
     // 수정
     @Transactional
-    public List<SearchCategory> modifyCategory(
-        Long userId, Long categoryId, MergeCategory mergeCategory) {
+    public List<CategoryDto> modifyCategory(
+        Long userId, Long categoryId, CategoryForm categoryForm) {
 
-        if (!rankUpStandardRepository.existsByRankName(mergeCategory.getCategoryRank())) {
+        if (!rankUpStandardRepository.existsByRankName(categoryForm.getCategoryRank())) {
             throw new GlobalException(UNREGISTERED_RANK);
         }
 
@@ -86,9 +86,9 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = categoryRepository.findByCategoryId(categoryId)
             .orElseThrow(() -> new GlobalException(NOT_FIND_CATEGORY));
 
-        category.setCategoryTitle(mergeCategory.getCategoryTitle());
-        category.setCategoryRank(mergeCategory.getCategoryRank());
-        category.setCategoryUesFlag(mergeCategory.isCategoryUesFlag());
+        category.setCategoryTitle(categoryForm.getCategoryTitle());
+        category.setCategoryRank(categoryForm.getCategoryRank());
+        category.setCategoryUesFlag(categoryForm.isCategoryUesFlag());
         user.getCategories().add(category);
 
         return searchCategory();
@@ -97,7 +97,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     // 삭제
     @Transactional
-    public List<SearchCategory> deleteCategory(Long userId, Long standardId) {
+    public List<CategoryDto> deleteCategory(Long userId, Long standardId) {
 
         userTypeCheckService.userTypeAdmin(userId);
 

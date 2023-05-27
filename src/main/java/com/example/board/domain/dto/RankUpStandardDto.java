@@ -8,19 +8,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class RankUpStandardDto {
 
-    @Getter
-    @Setter
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class SearchRankUpStandard {
-
-        private Long standardId;
-        private RankType rankName;
-        private Long boardCount;
-        private Long commentCount;
-        private boolean autoRankUpFlag;
-    }
+    private Long standardId;
+    private RankType rankName;
+    private Long boardCount;
+    private Long commentCount;
+    private boolean autoRankUpFlag;
 }

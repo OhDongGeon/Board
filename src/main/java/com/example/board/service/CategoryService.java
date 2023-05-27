@@ -1,26 +1,25 @@
 package com.example.board.service;
 
-import com.example.board.domain.dto.CategoryDto.SearchCategory;
-import com.example.board.domain.form.CategoryForm.MergeCategory;
+import com.example.board.domain.dto.CategoryDto;
+import com.example.board.domain.form.CategoryForm;
 import java.util.List;
 
 
 public interface CategoryService {
 
     // 조회
-    List<SearchCategory> searchCategory();
+    List<CategoryDto> searchCategory();
 
 
     // 저장
-    List<SearchCategory> addCategory(Long userId, MergeCategory mergeCategory);
+    List<CategoryDto> addCategory(Long userId, CategoryForm categoryForm);
 
 
     // 수정
-    List<SearchCategory> modifyCategory(
-        Long userId, Long categoryId, MergeCategory mergeCategory);
+    List<CategoryDto> modifyCategory(
+        Long userId, Long categoryId, CategoryForm categoryForm);
 
 
     // 삭제
-    List<SearchCategory> deleteCategory(Long userId, Long categoryId);
-
+    List<CategoryDto> deleteCategory(Long userId, Long categoryId);
 }
