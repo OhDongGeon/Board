@@ -13,11 +13,10 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RankUpStandardDto {
+public class CategoryDto {
 
-    private Long standardId;
-    private RankType rankName;
-    private Long boardCount;
-    private Long commentCount;
-    private boolean autoRankUpFlag;
+    private Long categoryId;
+    private String categoryTitle;
+    private RankType categoryRank;
+    private boolean categoryUesFlag;
 }

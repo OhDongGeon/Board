@@ -14,7 +14,10 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 
 @RequiredArgsConstructor
-@WebFilter(urlPatterns = {"/rankup/add/*", "/rankup/modify/*", "/rankup/delete/*"})
+@WebFilter(urlPatterns = {
+    "/rankup/add/*", "/rankup/modify/*", "/rankup/delete/*",
+    "/category/add/*", "/category/modify/*", "/category/delete/*"
+})
 public class TokenFilter extends OncePerRequestFilter {
 
     private final TokenProvider tokenProvider;
