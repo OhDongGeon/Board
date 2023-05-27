@@ -6,12 +6,12 @@ Content-Type: application/json
 ### 등업 기준 저장
 POST http://localhost:8080/rankup/add
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1MDgyMjU2LCJleHAiOjE2ODUxNjg2NTZ9.ZybLOZa-r3HWfaqvxnbX1rTXoW94NROXqDlPAu5JwflYZyyH-t32sOfP2loKXynyv9qFweTtvpmTldDKkDwZ2w
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1MTc2ODUzLCJleHAiOjE2ODUyNjMyNTN9.-Cq3LZfNAmhgbawurQ_eUoZAUugss_coNmB5z35qByTTOn-xFI5KJ7YXb43RxSSwiPu6BqMLLzgXxo0vNwp5ow
 
 {
-  "rankName": "LEVEL3",
-  "boardCount": 10,
-  "commentCount": 10,
+  "rankName": "LEVEL4",
+  "boardCount": 15,
+  "commentCount": 15,
   "autoRankUpFlag": true
 }
 

@@ -1,0 +1,33 @@
+### 게시판 분류 조회
+GET http://localhost:8080/category/search
+Content-Type: application/json
+
+
+### 게시판 분류 저장
+POST http://localhost:8080/category/add
+Content-Type: application/json
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1MTc2ODUzLCJleHAiOjE2ODUyNjMyNTN9.-Cq3LZfNAmhgbawurQ_eUoZAUugss_coNmB5z35qByTTOn-xFI5KJ7YXb43RxSSwiPu6BqMLLzgXxo0vNwp5ow
+
+{
+  "categoryTitle": "렙 3",
+  "categoryRank": "LEVEL3",
+  "categoryUesFlag": true
+}
+
+
+### 게시판 분류 수정
+PUT http://localhost:8080/category/modify/1
+Content-Type: application/json
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1MTcxMjgyLCJleHAiOjE2ODUyNTc2ODJ9.4iK2xHqyfb9Lj80jpWfJhYrygadiZAHOnsePLuMHxxeh2JjPtYaakAKe8lZsMRMHX5EP_qc3_0cVpfIsqFAdcQ
+
+{
+  "categoryTitle": "LEVEL3 변경",
+  "categoryRank": "LEVEL3",
+  "categoryUesFlag": true
+}
+
+
+### 게시판 분류 삭제
+DELETE http://localhost:8080/category/delete/1
+Content-Type: application/json
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1MTcxMjgyLCJleHAiOjE2ODUyNTc2ODJ9.4iK2xHqyfb9Lj80jpWfJhYrygadiZAHOnsePLuMHxxeh2JjPtYaakAKe8lZsMRMHX5EP_qc3_0cVpfIsqFAdcQ
