@@ -8,6 +8,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
 import java.util.Objects;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.StringUtils;
 
 
 public class TokenProvider {
@@ -35,6 +36,9 @@ public class TokenProvider {
 
 
     public Long getTokenUserId(String token) {
+        if (!StringUtils.hasText(token)) {
+            return 0L;
+        }
         Claims claims = parseClaims(token);
         return Long.valueOf(Objects.requireNonNull(Aes256util.decrypt(claims.getId())));
     }

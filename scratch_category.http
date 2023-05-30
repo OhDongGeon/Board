@@ -6,11 +6,11 @@ Content-Type: application/json
 ### 게시판 분류 저장
 POST http://localhost:8080/category/add
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1MTk5MDM1LCJleHAiOjE2ODUyODU0MzV9.Wb4FxIj3UDxUpq0BxBCjudvtKC7mJPuX0puvr8rdLAaBl2gjrquWGRP0lQn4S_GmU12Q-ydvNlXXLW7jrOe2kg
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1MjgzOTA1LCJleHAiOjE2ODUzNzAzMDV9.bav2cFioyfq2i7vlH1S3jCqwBXPlmV0_95Y5xkbGvOPXvSyblqDYAAFKemDRaQXuNGz08Xiw55W0h8ureTUlZQ
 
 {
   "categoryTitle": "렙 1",
-  "categoryRank": "LEVEL4",
+  "categoryRank": "LEVEL1",
   "categoryUesFlag": true
 }
 
