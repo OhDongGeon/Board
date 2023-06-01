@@ -14,9 +14,9 @@ POST http://localhost:8080/signup/user
 Content-Type: application/json
 
 {
-  "loginId": "ohdonggeon",
-  "userNickName": "먼지제거제",
-  "userPassword": "zxcvbnm123@"
+  "loginId": "ohdonggeon2",
+  "userNickName": "먼지제거제2",
+  "userPassword": "abcdefgh1!"
 }
 
 
@@ -25,6 +25,6 @@ POST http://localhost:8080/signin
 Content-Type: application/json
 
 {
-  "loginId": "administrator",
+  "loginId": "ohdonggeon",
   "userPassword": "abcdefgh1!"
 }

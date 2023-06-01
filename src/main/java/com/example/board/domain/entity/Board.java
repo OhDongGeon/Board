@@ -1,19 +1,12 @@
 package com.example.board.domain.entity;
 
-import com.example.board.domain.type.RankType;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,25 +22,23 @@ import org.hibernate.envers.AuditOverride;
 @AllArgsConstructor
 @NoArgsConstructor
 @AuditOverride(forClass = BaseEntity.class)
-public class Category extends BaseEntity {
+public class Board extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long categoryId;
+    private Long boardId;
 
-    @Column(columnDefinition = "VARCHAR(20) NOT NULL")
-    private String categoryTitle;
-    @Column(columnDefinition = "VARCHAR(10) NOT NULL")
-    @Enumerated(EnumType.STRING)
-    private RankType categoryRank;
-    private boolean categoryUesFlag;
+    @Column(columnDefinition = "VARCHAR(100) NOT NULL")
+    private String boardTitle;
+    private String boardContent;
+    private boolean boardPublicFlag;
 
 
     @ManyToOne
-    @JoinColumn(name = "createdUserId")
+    @JoinColumn(name = "userId")
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "categoryId")
-    private List<Board> boards = new ArrayList<>();
+    private Category category;
 }

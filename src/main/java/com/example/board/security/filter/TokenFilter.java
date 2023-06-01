@@ -16,7 +16,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @RequiredArgsConstructor
 @WebFilter(urlPatterns = {
     "/rankup/add/*", "/rankup/modify/*", "/rankup/delete/*",
-    "/category/add/*", "/category/modify/*", "/category/delete/*"
+    "/category/add/*", "/category/modify/*", "/category/delete/*",
+    "/board/*"
 })
 public class TokenFilter extends OncePerRequestFilter {
 
@@ -30,6 +31,12 @@ public class TokenFilter extends OncePerRequestFilter {
         FilterChain filterChain) throws ServletException, IOException {
 
         String token = request.getHeader(TOKEN_HEADER);
+        String requestURI = request.getRequestURI();
+
+        if (requestURI.startsWith("/board/list") && !StringUtils.hasText(token)) {
+            filterChain.doFilter(request, response);
+            return;
+        }
 
         if (!StringUtils.hasText(token) || !tokenProvider.validateToken(token)) {
             throw new ServletException("유효하지 않은 접근입니다.");
