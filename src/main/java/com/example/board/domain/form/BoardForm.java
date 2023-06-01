@@ -19,8 +19,23 @@ public class BoardForm {
     @AllArgsConstructor
     public static class ListBoard {
 
+        private int page;
+        private int size;
+        private Long categoryId;
         private String boardTitle;
         private String nickName;
+    }
+
+
+    @Getter
+    @Setter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ContentBoard {
+
+        private Long categoryId;
+        private Long boardId;
     }
 
 

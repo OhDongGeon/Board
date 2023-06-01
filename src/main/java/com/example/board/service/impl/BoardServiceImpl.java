@@ -9,10 +9,12 @@ import static com.example.board.exception.ErrorCode.NOT_MATCH_USER_RANK;
 
 import com.example.board.domain.dto.BoardDto;
 import com.example.board.domain.dto.BoardDto.SearchContentBoard;
+import com.example.board.domain.dto.BoardDto.SearchList;
 import com.example.board.domain.dto.BoardDto.SearchListBoard;
 import com.example.board.domain.entity.Board;
 import com.example.board.domain.entity.Category;
 import com.example.board.domain.entity.User;
+import com.example.board.domain.form.BoardForm.ContentBoard;
 import com.example.board.domain.form.BoardForm.ListBoard;
 import com.example.board.domain.form.BoardForm.MergeBoard;
 import com.example.board.domain.repository.BoardRepository;
@@ -21,7 +23,6 @@ import com.example.board.domain.repository.UserRepository;
 import com.example.board.domain.type.RankType;
 import com.example.board.exception.GlobalException;
 import com.example.board.service.BoardService;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -42,23 +43,27 @@ public class BoardServiceImpl implements BoardService {
 
 
     // 게시판 목록 조회
-    public List<SearchListBoard> searchListBoard(
-        Long userId, int page, int size, ListBoard listBoard) {
+    public List<SearchListBoard> searchListBoard(Long userId, ListBoard listBoard) {
 
-        Pageable pageable = PageRequest.of(page, size, Sort.by("boardId").descending());
+        Pageable pageable = PageRequest.of(
+            listBoard.getPage(), listBoard.getSize(), Sort.by("boardId").descending());
 
         List<SearchListBoard> searchListBoards = new ArrayList<>();
 
-        List<Object[]> boardList = boardRepository.findBoardList(
-            userId, listBoard.getBoardTitle(), listBoard.getNickName(), pageable);
+        List<SearchList> boardList = listBoard.getCategoryId() == 0 ?
+            boardRepository.findAllBoardList
+                (userId, listBoard.getBoardTitle(), listBoard.getNickName(), pageable) :
+            boardRepository.findBoardList(
+                userId, listBoard.getCategoryId(), listBoard.getBoardTitle(), listBoard.getNickName(), pageable);
 
-        for (Object[] board : boardList) {
+        for (SearchList board : boardList) {
+
             SearchListBoard searchListBoard = SearchListBoard.builder()
-                .boardId((Long) board[0])
-                .boardTitle((String) board[1])
-                .userId((Long) board[2])
-                .userNickName((String) board[3])
-                .createDate((LocalDateTime) board[4])
+                .boardId(board.getBoardId())
+                .boardTitle(board.getBoardTitle())
+                .userId(board.getUserId())
+                .userNickName(board.getUserNickName())
+                .createDate(board.getCreateDate())
                 .build();
 
             searchListBoards.add(searchListBoard);
@@ -69,14 +74,14 @@ public class BoardServiceImpl implements BoardService {
 
 
     // 게시판 내용 조회
-    public SearchContentBoard searchContentBoard(Long userId, Long categoryId, Long boardId) {
+    public SearchContentBoard searchContentBoard(Long userId, ContentBoard contentBoard) {
 
-        Category category = categoryRepository.findByCategoryId(categoryId)
+        Category category = categoryRepository.findByCategoryId(contentBoard.getCategoryId())
             .orElseThrow(() -> new GlobalException(NOT_FIND_CATEGORY));
 
         User user = checkUser(userId, category.getCategoryRank());
 
-        Board board = boardRepository.findByBoardId(boardId)
+        Board board = boardRepository.findByBoardId(contentBoard.getBoardId())
             .orElseThrow(() -> new GlobalException(NOT_FIND_BOARD));
 
         if (!board.isBoardPublicFlag() && !userId.equals(board.getUser().getUserId())) {
@@ -86,6 +91,8 @@ public class BoardServiceImpl implements BoardService {
         return BoardDto.SearchContentBoard.builder()
             .userId(user.getUserId())
             .userNickName(user.getUserNickName())
+            .categoryId(category.getCategoryId())
+            .categoryTitle(category.getCategoryTitle())
             .boardId(board.getBoardId())
             .boardTitle(board.getBoardTitle())
             .boardContent(board.getBoardContent())
@@ -111,7 +118,12 @@ public class BoardServiceImpl implements BoardService {
         user.getBoards().add(board);
         category.getBoards().add(board);
 
-        return searchContentBoard(userId, category.getCategoryId(), board.getBoardId());
+        ContentBoard contentBoard = ContentBoard.builder()
+            .categoryId(category.getCategoryId())
+            .boardId(board.getBoardId())
+            .build();
+
+        return searchContentBoard(userId, contentBoard);
     }
 
 
@@ -139,7 +151,12 @@ public class BoardServiceImpl implements BoardService {
         user.getBoards().add(board);
         category.getBoards().add(board);
 
-        return searchContentBoard(userId, category.getCategoryId(), board.getBoardId());
+        ContentBoard contentBoard = ContentBoard.builder()
+            .categoryId(category.getCategoryId())
+            .boardId(board.getBoardId())
+            .build();
+
+        return searchContentBoard(userId, contentBoard);
     }
 
 
@@ -156,12 +173,16 @@ public class BoardServiceImpl implements BoardService {
 
         boardRepository.delete(board);
 
+        // 리스트를 재조회 하기위한 세팅
         ListBoard listBoard = ListBoard.builder()
+            .page(0)
+            .size(20)
+            .categoryId(0L)
             .boardTitle("")
             .nickName("")
             .build();
 
-        return searchListBoard(userId, 0, 20, listBoard);
+        return searchListBoard(userId, listBoard);
     }
 
 

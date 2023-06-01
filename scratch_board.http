@@ -1,24 +1,35 @@
 ### 게시글 목록 조회
-GET http://localhost:8080/board/list/0/10
+GET http://localhost:8080/board/list
 Content-Type: application/json
-USER_TOKEN_HEADER:
+//USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTUyNjYxNCwiZXhwIjoxNjg1NjEzMDE0fQ.xUEy6_Ha42Rp0MOWT1nZKKKkBnBL65y62T9i6VSQKTOiBouqSyBle1oagCaeQy1yndoy7_6u_rdjwDbrGYsiaQ
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJ1WXVtTmUxSHlCR2hHRVFubXEvYVN3PT0iLCJzdWIiOiJlbWhSYWNpbFRSNFRlTTJyQ3B2Wml3PT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTU0NjEyMiwiZXhwIjoxNjg1NjMyNTIyfQ.BNevBKrSjGInq54_LBHIu3a_N2V2umFNwKOk1cffzNje-1tzV-xQ0ip8GTOWEtjyttlbNr3xzzSA73f4fVxpww
+
 
 {
+  "page" : 0,
+  "size": 20,
+  "categoryId" : 0,
   "boardTitle": "",
   "nickName": ""
 }
 
 
 ### 게시글 조회
-GET http://localhost:8080/board/content/1/36
+GET http://localhost:8080/board/content
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTQyNjI0OSwiZXhwIjoxNjg1NTEyNjQ5fQ.rNQUcYw6_t82VIDXWeiXlaYNyVrXD4RO_XXkJLgwIVNzZ1TvNMPx0fKgEdJosvWpmAcPSn8QAShVEP59Y9mjtw
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTUyNjYxNCwiZXhwIjoxNjg1NjEzMDE0fQ.xUEy6_Ha42Rp0MOWT1nZKKKkBnBL65y62T9i6VSQKTOiBouqSyBle1oagCaeQy1yndoy7_6u_rdjwDbrGYsiaQ
+
+{
+  "categoryId" : 1,
+  "boardId": 36
+}
+
 
 
 ### 게시글 저장
-POST http://localhost:8080/board/add
+POST http://localhost:8080/board/content
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTQyNTE3NiwiZXhwIjoxNjg1NTExNTc2fQ.ae17zVl-YgeuzODco903mtzdM568IIhp75x9_L0TvpPzzdkE5ymhLsh8SnksJgTHcgTQ8gSe2Te1rUdQVkpXHw
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTUyNjYxNCwiZXhwIjoxNjg1NjEzMDE0fQ.xUEy6_Ha42Rp0MOWT1nZKKKkBnBL65y62T9i6VSQKTOiBouqSyBle1oagCaeQy1yndoy7_6u_rdjwDbrGYsiaQ
 
 {
   "categoryId": 1,
@@ -29,9 +40,9 @@ USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3
 
 
 ### 게시글 수정
-PUT http://localhost:8080/board/modify/39
+PUT http://localhost:8080/board/content/39
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTQyNTE3NiwiZXhwIjoxNjg1NTExNTc2fQ.ae17zVl-YgeuzODco903mtzdM568IIhp75x9_L0TvpPzzdkE5ymhLsh8SnksJgTHcgTQ8gSe2Te1rUdQVkpXHw
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJ1WXVtTmUxSHlCR2hHRVFubXEvYVN3PT0iLCJzdWIiOiJlbWhSYWNpbFRSNFRlTTJyQ3B2Wml3PT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTU0NjEyMiwiZXhwIjoxNjg1NjMyNTIyfQ.BNevBKrSjGInq54_LBHIu3a_N2V2umFNwKOk1cffzNje-1tzV-xQ0ip8GTOWEtjyttlbNr3xzzSA73f4fVxpww
 
 {
   "categoryId": 1,
@@ -42,6 +53,6 @@ USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3
 
 
 ### 게시글 삭제
-DELETE http://localhost:8080/board/delete/35
+DELETE http://localhost:8080/board/content/39
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTM3MjYzMiwiZXhwIjoxNjg1NDU5MDMyfQ.w2Peltz6TmUpu5xEmGDu68Ax848Ndsz19Xicg_G3krCOrkbxbRCLOo37BeZiGmXy6QU9zXVsSYAEFnR8cctr-Q
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJ1WXVtTmUxSHlCR2hHRVFubXEvYVN3PT0iLCJzdWIiOiJlbWhSYWNpbFRSNFRlTTJyQ3B2Wml3PT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTU0NjEyMiwiZXhwIjoxNjg1NjMyNTIyfQ.BNevBKrSjGInq54_LBHIu3a_N2V2umFNwKOk1cffzNje-1tzV-xQ0ip8GTOWEtjyttlbNr3xzzSA73f4fVxpww

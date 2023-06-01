@@ -16,6 +16,7 @@ public class TokenProvider {
     @Value("${spring.jwt.secret}")
     private String secretKey;
     private static final long TOKEN_EXPIRE_TIME = 1000 * 60 * 60 * 24;
+    private static final long EMPTY_TOKEN_USERID = 0;
 
 
     public String createToken(Long userId, String loginId, RankType userRank) {
@@ -37,7 +38,7 @@ public class TokenProvider {
 
     public Long getTokenUserId(String token) {
         if (!StringUtils.hasText(token)) {
-            return 0L;
+            return EMPTY_TOKEN_USERID;
         }
         Claims claims = parseClaims(token);
         return Long.valueOf(Objects.requireNonNull(Aes256util.decrypt(claims.getId())));

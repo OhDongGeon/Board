@@ -2,6 +2,7 @@ package com.example.board.controller;
 
 import com.example.board.domain.dto.BoardDto.SearchContentBoard;
 import com.example.board.domain.dto.BoardDto.SearchListBoard;
+import com.example.board.domain.form.BoardForm.ContentBoard;
 import com.example.board.domain.form.BoardForm.ListBoard;
 import com.example.board.domain.form.BoardForm.MergeBoard;
 import com.example.board.security.TokenProvider;
@@ -32,31 +33,29 @@ public class BoardController {
 
 
     // 게시판 목록 조회
-    @GetMapping("/list/{page}/{size}")
+    @GetMapping("list")
     public ResponseEntity<List<SearchListBoard>> searchListBoard(
         @RequestHeader(name = TOKEN_HEADER) String token,
-        @PathVariable("page") int page, @PathVariable("size") int size,
         @RequestBody @Valid ListBoard listBoard) {
 
         return ResponseEntity.ok(boardService.searchListBoard(
-            tokenProvider.getTokenUserId(token), page, size, listBoard));
+            tokenProvider.getTokenUserId(token), listBoard));
     }
 
 
     // 게시판 내용 조회
-    @GetMapping("/content/{categoryId}/{boardId}")
+    @GetMapping("/content")
     public ResponseEntity<SearchContentBoard> searchContentBoard(
         @RequestHeader(name = TOKEN_HEADER) String token,
-        @PathVariable("categoryId") Long categoryId,
-        @PathVariable("boardId") Long boardId) {
+        @RequestBody @Valid ContentBoard contentBoard) {
 
         return ResponseEntity.ok(boardService.searchContentBoard(
-            tokenProvider.getTokenUserId(token), categoryId, boardId));
+            tokenProvider.getTokenUserId(token), contentBoard));
     }
 
 
     // 저장
-    @PostMapping("/add")
+    @PostMapping("/content")
     public ResponseEntity<SearchContentBoard> addBoard(
         @RequestHeader(name = TOKEN_HEADER) String token,
         @RequestBody @Valid MergeBoard mergeBoard) {
@@ -67,7 +66,7 @@ public class BoardController {
 
 
     // 수정
-    @PutMapping("/modify/{boardId}")
+    @PutMapping("/content/{boardId}")
     public ResponseEntity<SearchContentBoard> modifyBoard(
         @RequestHeader(name = TOKEN_HEADER) String token,
         @PathVariable("boardId") Long boardId,
@@ -79,7 +78,7 @@ public class BoardController {
 
 
     // 삭제
-    @DeleteMapping("/delete/{boardId}")
+    @DeleteMapping("/content/{boardId}")
     public ResponseEntity<List<SearchListBoard>> deleteCategory(
         @RequestHeader(name = TOKEN_HEADER) String token,
         @PathVariable("boardId") Long boardId) {
