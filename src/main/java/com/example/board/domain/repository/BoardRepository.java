@@ -40,4 +40,5 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 
     Optional<Board> findByBoardId(Long boardId);
 
+    boolean existsByCategoryCategoryId(Long categoryId);
 }

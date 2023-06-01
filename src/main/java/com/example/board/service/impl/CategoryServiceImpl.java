@@ -1,12 +1,14 @@
 package com.example.board.service.impl;
 
 import static com.example.board.exception.ErrorCode.NOT_FIND_CATEGORY;
+import static com.example.board.exception.ErrorCode.REGISTERED_CATEGORY_BOARD;
 import static com.example.board.exception.ErrorCode.UNREGISTERED_RANK;
 
 import com.example.board.domain.dto.CategoryDto;
 import com.example.board.domain.entity.Category;
 import com.example.board.domain.entity.User;
 import com.example.board.domain.form.CategoryForm;
+import com.example.board.domain.repository.BoardRepository;
 import com.example.board.domain.repository.CategoryRepository;
 import com.example.board.domain.repository.RankUpStandardRepository;
 import com.example.board.exception.GlobalException;
@@ -26,6 +28,7 @@ public class CategoryServiceImpl implements CategoryService {
     private final UserTypeCheckService userTypeCheckService;
     private final RankUpStandardRepository rankUpStandardRepository;
     private final CategoryRepository categoryRepository;
+    private final BoardRepository boardRepository;
 
 
     // 조회
@@ -33,7 +36,8 @@ public class CategoryServiceImpl implements CategoryService {
 
         List<CategoryDto> categories = new ArrayList<>();
 
-        for (Category category : categoryRepository.findAllByOrderByCategoryRank()) {
+        for (Category category : categoryRepository.findAllByCategoryUesFlagOrderByCategoryRank(
+            true)) {
             CategoryDto searchCategory = CategoryDto.builder()
                 .categoryId(category.getCategoryId())
                 .categoryTitle(category.getCategoryTitle())
@@ -78,8 +82,9 @@ public class CategoryServiceImpl implements CategoryService {
         if (!rankUpStandardRepository.existsByRankName(categoryForm.getCategoryRank())) {
             throw new GlobalException(UNREGISTERED_RANK);
         }
-
-        // 삭제 전 게시글이 있는지 확인 추후 추가
+        if (boardRepository.existsByCategoryCategoryId(categoryId)) {
+            throw new GlobalException(REGISTERED_CATEGORY_BOARD);
+        }
 
         User user = userTypeCheckService.userTypeAdmin(userId);
 
@@ -104,7 +109,9 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = categoryRepository.findByCategoryId(standardId)
             .orElseThrow(() -> new GlobalException(NOT_FIND_CATEGORY));
 
-        // 삭제 전 게시글이 있는지 확인 추후 추가
+        if (boardRepository.existsByCategoryCategoryId(category.getCategoryId())) {
+            throw new GlobalException(REGISTERED_CATEGORY_BOARD);
+        }
 
         categoryRepository.delete(category);
 

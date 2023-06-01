@@ -16,13 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/rankup")
 public class RankUpStandardController {
 
     private final RankUpStandardService rankUpStandardService;
@@ -31,7 +29,7 @@ public class RankUpStandardController {
 
 
     // 조회
-    @GetMapping("/search")
+    @GetMapping("/rankup")
     public ResponseEntity<List<RankUpStandardDto>> searchRankUpStandard() {
 
         return ResponseEntity.ok(rankUpStandardService.searchRankUpStandard());
@@ -39,7 +37,7 @@ public class RankUpStandardController {
 
 
     // 저장
-    @PostMapping("/add")
+    @PostMapping("/rankup")
     public ResponseEntity<List<RankUpStandardDto>> addRankUpStandard(
         @RequestHeader(name = TOKEN_HEADER) String token,
         @RequestBody @Valid AddRankUpStandard addRankUpStandard) {
@@ -50,7 +48,7 @@ public class RankUpStandardController {
 
 
     // 수정
-    @PutMapping("/modify/{standardId}")
+    @PutMapping("/rankup/{standardId}")
     public ResponseEntity<List<RankUpStandardDto>> modifyRankUpStandard(
         @RequestHeader(name = TOKEN_HEADER) String token,
         @PathVariable("standardId") Long standardId,
@@ -62,7 +60,7 @@ public class RankUpStandardController {
 
 
     // 삭제
-    @DeleteMapping("/delete/{standardId}")
+    @DeleteMapping("/rankup/{standardId}")
     public ResponseEntity<List<RankUpStandardDto>> deleteRankUpStandard(
         @RequestHeader(name = TOKEN_HEADER) String token,
         @PathVariable("standardId") Long standardId) {

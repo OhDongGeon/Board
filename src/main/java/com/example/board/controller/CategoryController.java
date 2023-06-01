@@ -15,13 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/category")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -30,7 +28,7 @@ public class CategoryController {
 
 
     // 조회
-    @GetMapping("/search")
+    @GetMapping("/category")
     public ResponseEntity<List<CategoryDto>> searchCategory() {
 
         return ResponseEntity.ok(categoryService.searchCategory());
@@ -38,7 +36,7 @@ public class CategoryController {
 
 
     // 저장
-    @PostMapping("/add")
+    @PostMapping("/category")
     public ResponseEntity<List<CategoryDto>> addCategory(
         @RequestHeader(name = TOKEN_HEADER) String token,
         @RequestBody @Valid CategoryForm categoryForm) {
@@ -49,7 +47,7 @@ public class CategoryController {
 
 
     // 수정
-    @PutMapping("/modify/{categoryId}")
+    @PutMapping("/category/{categoryId}")
     public ResponseEntity<List<CategoryDto>> modifyCategory(
         @RequestHeader(name = TOKEN_HEADER) String token,
         @PathVariable("categoryId") Long categoryId,
@@ -61,12 +59,10 @@ public class CategoryController {
 
 
     // 삭제
-    @DeleteMapping("/delete/{categoryId}")
+    @DeleteMapping("/category/{categoryId}")
     public ResponseEntity<List<CategoryDto>> deleteCategory(
         @RequestHeader(name = TOKEN_HEADER) String token,
         @PathVariable("categoryId") Long categoryId) {
-
-        // 삭제 전 게시글이 있는지 확인
 
         return ResponseEntity.ok(categoryService.deleteCategory(
             tokenProvider.getTokenUserId(token), categoryId));

@@ -1,12 +1,12 @@
 ### 게시판 분류 조회
-GET http://localhost:8080/category/search
+GET http://localhost:8080/category
 Content-Type: application/json
 
 
 ### 게시판 분류 저장
-POST http://localhost:8080/category/add
+POST http://localhost:8080/category
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1MjgzOTA1LCJleHAiOjE2ODUzNzAzMDV9.bav2cFioyfq2i7vlH1S3jCqwBXPlmV0_95Y5xkbGvOPXvSyblqDYAAFKemDRaQXuNGz08Xiw55W0h8ureTUlZQ
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1NTk4MTU2LCJleHAiOjE2ODU2ODQ1NTZ9.qzl06wAHc24dPziuPcDGRP8y4zEJ5y9XGglnMKqNfuM5mOceKNltMR1PAZIroMc3_1hxvWNp7J_G0luqVUdYpA
 
 {
   "categoryTitle": "렙 1",
@@ -16,18 +16,18 @@ USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxR
 
 
 ### 게시판 분류 수정
-PUT http://localhost:8080/category/modify/1
+PUT http://localhost:8080/category/3
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1MTk5MDM1LCJleHAiOjE2ODUyODU0MzV9.Wb4FxIj3UDxUpq0BxBCjudvtKC7mJPuX0puvr8rdLAaBl2gjrquWGRP0lQn4S_GmU12Q-ydvNlXXLW7jrOe2kg
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1NTk2MjcxLCJleHAiOjE2ODU2ODI2NzF9.IcttuhlnGpb6C3orDNX4hSwuwsJSGlCNlwOPheoQfY-2TOwkekxW1BfehIWT06Gty98ft6rwO8qczfoQP9jLVQ
 
 {
-  "categoryTitle": "LEVEL4 변경",
-  "categoryRank": "LEVEL4",
+  "categoryTitle": "LEVEL1 변경",
+  "categoryRank": "LEVEL1",
   "categoryUesFlag": true
 }
 
 
 ### 게시판 분류 삭제
-DELETE http://localhost:8080/category/delete/1
+DELETE http://localhost:8080/category/1
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1MTk5ODMwLCJleHAiOjE2ODUyODYyMzB9.ph3WgddRzo9NgxW0fXNuplaNVOOPjn9gCphkXujMBEbguckh93pQ3fXM11GTiPkIAmNhMhUfb7lmIp0IhJU7KQ
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1NTk2MjcxLCJleHAiOjE2ODU2ODI2NzF9.IcttuhlnGpb6C3orDNX4hSwuwsJSGlCNlwOPheoQfY-2TOwkekxW1BfehIWT06Gty98ft6rwO8qczfoQP9jLVQ

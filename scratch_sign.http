@@ -14,8 +14,8 @@ POST http://localhost:8080/signup/user
 Content-Type: application/json
 
 {
-  "loginId": "ohdonggeon2",
-  "userNickName": "먼지제거제2",
+  "loginId": "ohdonggeon",
+  "userNickName": "먼지제거제",
   "userPassword": "abcdefgh1!"
 }
 
