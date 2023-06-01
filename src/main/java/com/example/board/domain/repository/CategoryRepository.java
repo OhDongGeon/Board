@@ -11,7 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-    List<Category> findAllByOrderByCategoryRank();
+
+    List<Category> findAllByCategoryUesFlagOrderByCategoryRank(boolean categoryUesFlag);
 
     Optional<Category> findByCategoryId(Long categoryId);
 

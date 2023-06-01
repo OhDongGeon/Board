@@ -1,34 +1,34 @@
 ### 등업 기준 조회
-GET http://localhost:8080/rankup/search
+GET http://localhost:8080/rankup
 Content-Type: application/json
 
 
 ### 등업 기준 저장
-POST http://localhost:8080/rankup/add
+POST http://localhost:8080/rankup
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1MjgzOTA1LCJleHAiOjE2ODUzNzAzMDV9.bav2cFioyfq2i7vlH1S3jCqwBXPlmV0_95Y5xkbGvOPXvSyblqDYAAFKemDRaQXuNGz08Xiw55W0h8ureTUlZQ
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1NTk3MzMyLCJleHAiOjE2ODU2ODM3MzJ9.vSR4__eli69y68iHQn99U67Me6YXefyLAbPYR9Vl-TkLdWg5SoXe9P1jnI_XEgLjXg9xhhzsi3XDhUJAl-u4xQ
 
 {
-  "rankName": "LEVEL1",
+  "rankName": "LEVEL3",
+  "boardCount": 10,
+  "commentCount": 10,
+  "autoRankUpFlag": false
+}
+
+
+### 등업 기준 수정
+PUT http://localhost:8080/rankup/1
+Content-Type: application/json
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1NTk2MjcxLCJleHAiOjE2ODU2ODI2NzF9.IcttuhlnGpb6C3orDNX4hSwuwsJSGlCNlwOPheoQfY-2TOwkekxW1BfehIWT06Gty98ft6rwO8qczfoQP9jLVQ
+
+{
   "boardCount": 0,
   "commentCount": 0,
   "autoRankUpFlag": true
 }
 
 
-### 등업 기준 수정
-PUT http://localhost:8080/rankup/modify/1
-Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1MTk5ODMwLCJleHAiOjE2ODUyODYyMzB9.ph3WgddRzo9NgxW0fXNuplaNVOOPjn9gCphkXujMBEbguckh93pQ3fXM11GTiPkIAmNhMhUfb7lmIp0IhJU7KQ
-
-{
-  "boardCount": 10,
-  "commentCount": 10,
-  "autoRankUpFlag": true
-}
-
-
 ### 등업 기준 삭제
-DELETE http://localhost:8080/rankup/delete/1
+DELETE http://localhost:8080/rankup/2
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1MTk5ODMwLCJleHAiOjE2ODUyODYyMzB9.ph3WgddRzo9NgxW0fXNuplaNVOOPjn9gCphkXujMBEbguckh93pQ3fXM11GTiPkIAmNhMhUfb7lmIp0IhJU7KQ
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1NTk2MjcxLCJleHAiOjE2ODU2ODI2NzF9.IcttuhlnGpb6C3orDNX4hSwuwsJSGlCNlwOPheoQfY-2TOwkekxW1BfehIWT06Gty98ft6rwO8qczfoQP9jLVQ

@@ -16,7 +16,6 @@ import com.example.board.domain.form.RankUpStandardForm.ModifyRankUpStandard;
 import com.example.board.domain.repository.CategoryRepository;
 import com.example.board.domain.repository.RankUpStandardRepository;
 import com.example.board.domain.type.RankType;
-import com.example.board.exception.ErrorCode;
 import com.example.board.exception.GlobalException;
 import com.example.board.service.RankUpStandardService;
 import com.example.board.service.UserTypeCheckService;
@@ -99,8 +98,8 @@ public class RankUpStandardImpl implements RankUpStandardService {
             .orElseThrow(() -> new GlobalException(NOT_FIND_RANK));
 
         // 입력 받은 등급의 전후 등급 확인
-        checkUnderOverRank(rankUpStandard.getRankName(), rankUpStandard.getBoardCount(),
-            rankUpStandard.getCommentCount());
+        checkUnderOverRank(rankUpStandard.getRankName(), modifyRankUpStandard.getBoardCount(),
+            modifyRankUpStandard.getCommentCount());
 
         rankUpStandard.setBoardCount(modifyRankUpStandard.getBoardCount());
         rankUpStandard.setCommentCount(modifyRankUpStandard.getCommentCount());

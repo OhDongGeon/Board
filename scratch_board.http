@@ -1,9 +1,8 @@
 ### 게시글 목록 조회
 GET http://localhost:8080/board/list
 Content-Type: application/json
-//USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTUyNjYxNCwiZXhwIjoxNjg1NjEzMDE0fQ.xUEy6_Ha42Rp0MOWT1nZKKKkBnBL65y62T9i6VSQKTOiBouqSyBle1oagCaeQy1yndoy7_6u_rdjwDbrGYsiaQ
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJ1WXVtTmUxSHlCR2hHRVFubXEvYVN3PT0iLCJzdWIiOiJlbWhSYWNpbFRSNFRlTTJyQ3B2Wml3PT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTU0NjEyMiwiZXhwIjoxNjg1NjMyNTIyfQ.BNevBKrSjGInq54_LBHIu3a_N2V2umFNwKOk1cffzNje-1tzV-xQ0ip8GTOWEtjyttlbNr3xzzSA73f4fVxpww
-
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTU5ODYwMCwiZXhwIjoxNjg1Njg1MDAwfQ.LsOukVhMdfCmE2g9SielHZnEsK7HjllacG6t8Lxn_mhS9W5YfkiaNx0ABZpLEFu_-e6KFJoUrAfwA_s2iJqG3A
+#USER_TOKEN_HEADER:
 
 {
   "page" : 0,
@@ -20,8 +19,8 @@ Content-Type: application/json
 USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTUyNjYxNCwiZXhwIjoxNjg1NjEzMDE0fQ.xUEy6_Ha42Rp0MOWT1nZKKKkBnBL65y62T9i6VSQKTOiBouqSyBle1oagCaeQy1yndoy7_6u_rdjwDbrGYsiaQ
 
 {
-  "categoryId" : 1,
-  "boardId": 36
+  "categoryId" : 3,
+  "boardId": 1
 }
 
 
@@ -29,30 +28,30 @@ USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3
 ### 게시글 저장
 POST http://localhost:8080/board/content
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTUyNjYxNCwiZXhwIjoxNjg1NjEzMDE0fQ.xUEy6_Ha42Rp0MOWT1nZKKKkBnBL65y62T9i6VSQKTOiBouqSyBle1oagCaeQy1yndoy7_6u_rdjwDbrGYsiaQ
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTU5ODY5NSwiZXhwIjoxNjg1Njg1MDk1fQ.jcWXQC67k51YIFUaavPbgX9-tOKpL4I61Jhb2mmdQ2lqbpwEdAjleeLXcXUCDM-YAuOoQUA9gcuOptHe-YlBlw
 
 {
-  "categoryId": 1,
-  "boardTitle": "하파타카차자아사바마라다나가",
+  "categoryId": 3,
+  "boardTitle": "가나다라마바사~아자차카타파하~",
   "boardContent": "에헤 오에오에오오오~",
   "boardPublicFlag": true
 }
 
 
 ### 게시글 수정
-PUT http://localhost:8080/board/content/39
+PUT http://localhost:8080/board/content/1
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJ1WXVtTmUxSHlCR2hHRVFubXEvYVN3PT0iLCJzdWIiOiJlbWhSYWNpbFRSNFRlTTJyQ3B2Wml3PT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTU0NjEyMiwiZXhwIjoxNjg1NjMyNTIyfQ.BNevBKrSjGInq54_LBHIu3a_N2V2umFNwKOk1cffzNje-1tzV-xQ0ip8GTOWEtjyttlbNr3xzzSA73f4fVxpww
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTU5ODY5NSwiZXhwIjoxNjg1Njg1MDk1fQ.jcWXQC67k51YIFUaavPbgX9-tOKpL4I61Jhb2mmdQ2lqbpwEdAjleeLXcXUCDM-YAuOoQUA9gcuOptHe-YlBlw
 
 {
-  "categoryId": 1,
-  "boardTitle": "22222",
-  "boardContent": "하나둘셋넷다섯여섯일곱",
-  "boardPublicFlag": true
+  "categoryId": 3,
+  "boardTitle": "가나다라마바사~아자차카타파하~",
+  "boardContent": "에헤 오에오에오오오~",
+  "boardPublicFlag": false
 }
 
 
 ### 게시글 삭제
-DELETE http://localhost:8080/board/content/39
+DELETE http://localhost:8080/board/content/1
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJ1WXVtTmUxSHlCR2hHRVFubXEvYVN3PT0iLCJzdWIiOiJlbWhSYWNpbFRSNFRlTTJyQ3B2Wml3PT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTU0NjEyMiwiZXhwIjoxNjg1NjMyNTIyfQ.BNevBKrSjGInq54_LBHIu3a_N2V2umFNwKOk1cffzNje-1tzV-xQ0ip8GTOWEtjyttlbNr3xzzSA73f4fVxpww
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTU5ODY5NSwiZXhwIjoxNjg1Njg1MDk1fQ.jcWXQC67k51YIFUaavPbgX9-tOKpL4I61Jhb2mmdQ2lqbpwEdAjleeLXcXUCDM-YAuOoQUA9gcuOptHe-YlBlw
