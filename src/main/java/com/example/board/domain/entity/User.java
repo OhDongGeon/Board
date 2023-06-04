@@ -54,4 +54,8 @@ public class User extends BaseEntity {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "userId")
     private List<Board> boards = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userId")
+    private List<Comment> comments = new ArrayList<>();
 }

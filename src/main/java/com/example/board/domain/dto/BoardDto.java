@@ -2,6 +2,7 @@ package com.example.board.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,10 +17,15 @@ public class BoardDto {
     // Select 시 Dto 위치를 지정해 줘야 했음
     // ex) select new com.example.board.domain.dto(칼럼명) from 테이블
     public interface SearchList {
+
         Long getBoardId();
+
         String getBoardTitle();
+
         Long getUserId();
+
         String getUserNickName();
+
         LocalDateTime getCreateDate();
     }
 
@@ -58,5 +64,6 @@ public class BoardDto {
         @JsonFormat(shape = JsonFormat.Shape.STRING,
             pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
         private LocalDateTime createDate;
+        private List<CommentDto> commentDto;
     }
 }

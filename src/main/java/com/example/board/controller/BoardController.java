@@ -43,7 +43,7 @@ public class BoardController {
     }
 
 
-    // 게시판 내용 조회
+    // 게시판 내용, 댓글 조회
     @GetMapping("/content")
     public ResponseEntity<SearchContentBoard> searchContentBoard(
         @RequestHeader(name = TOKEN_HEADER) String token,
