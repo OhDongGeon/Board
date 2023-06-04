@@ -13,7 +13,7 @@ public interface BoardService {
     // 게시판 목록 조회
     List<SearchListBoard> searchListBoard(Long userId, ListBoard listBoard);
 
-    // 게시판 내용 조회
+    // 게시판 내용, 댓글 조회
     SearchContentBoard searchContentBoard(Long userId, ContentBoard contentBoard);
 
     // 저장

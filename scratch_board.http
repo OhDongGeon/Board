@@ -16,7 +16,7 @@ USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3
 ### 게시글 조회
 GET http://localhost:8080/board/content
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTUyNjYxNCwiZXhwIjoxNjg1NjEzMDE0fQ.xUEy6_Ha42Rp0MOWT1nZKKKkBnBL65y62T9i6VSQKTOiBouqSyBle1oagCaeQy1yndoy7_6u_rdjwDbrGYsiaQ
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTg2MzgxMywiZXhwIjoxNjg1OTUwMjEzfQ.UlqJ5PYr5vGqWVoPaiZO7iADxoRxzDm1P4Lqtc655wdW1aRLERMUgS3FAXlr7Oqf4qi3ZiFuaf7D1plqSn4XXA
 
 {
   "categoryId" : 3,
@@ -41,13 +41,13 @@ USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3
 ### 게시글 수정
 PUT http://localhost:8080/board/content/1
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTU5ODY5NSwiZXhwIjoxNjg1Njg1MDk1fQ.jcWXQC67k51YIFUaavPbgX9-tOKpL4I61Jhb2mmdQ2lqbpwEdAjleeLXcXUCDM-YAuOoQUA9gcuOptHe-YlBlw
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTg2MzgxMywiZXhwIjoxNjg1OTUwMjEzfQ.UlqJ5PYr5vGqWVoPaiZO7iADxoRxzDm1P4Lqtc655wdW1aRLERMUgS3FAXlr7Oqf4qi3ZiFuaf7D1plqSn4XXA
 
 {
   "categoryId": 3,
   "boardTitle": "가나다라마바사~아자차카타파하~",
   "boardContent": "에헤 오에오에오오오~",
-  "boardPublicFlag": false
+  "boardPublicFlag": true
 }
 
 

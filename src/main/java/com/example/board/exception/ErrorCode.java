@@ -31,10 +31,14 @@ public enum ErrorCode {
 
     // 게시글
     NOT_FIND_BOARD("존재하지 않는 게시글 입니다."),
-    NOT_MATCH_LOGIN_ID("게시글의 작성자가 아닙니다."),
+    NOT_MATCH_LOGIN_ID("작성자가 아닙니다."),
     CLOSED_BOARD("비공개 게시글 입니다."),
-    REGISTERED_CATEGORY_BOARD("해당 게시판 분류에 등록된 게시글이 있습니다.");
+    REGISTERED_CATEGORY_BOARD("해당 게시판 분류에 등록된 게시글이 있습니다."),
 
-    
+    // 댓글
+    NOT_FIND_COMMENT("존재하지 않는 댓글 입니다.");
+
+
+
     private final String MESSAGE;
 }

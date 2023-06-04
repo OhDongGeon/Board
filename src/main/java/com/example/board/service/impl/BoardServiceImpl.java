@@ -11,14 +11,17 @@ import com.example.board.domain.dto.BoardDto;
 import com.example.board.domain.dto.BoardDto.SearchContentBoard;
 import com.example.board.domain.dto.BoardDto.SearchList;
 import com.example.board.domain.dto.BoardDto.SearchListBoard;
+import com.example.board.domain.dto.CommentDto;
 import com.example.board.domain.entity.Board;
 import com.example.board.domain.entity.Category;
+import com.example.board.domain.entity.Comment;
 import com.example.board.domain.entity.User;
 import com.example.board.domain.form.BoardForm.ContentBoard;
 import com.example.board.domain.form.BoardForm.ListBoard;
 import com.example.board.domain.form.BoardForm.MergeBoard;
 import com.example.board.domain.repository.BoardRepository;
 import com.example.board.domain.repository.CategoryRepository;
+import com.example.board.domain.repository.CommentRepository;
 import com.example.board.domain.repository.UserRepository;
 import com.example.board.domain.type.RankType;
 import com.example.board.exception.GlobalException;
@@ -40,6 +43,7 @@ public class BoardServiceImpl implements BoardService {
     private final UserRepository userRepository;
     private final CategoryRepository categoryRepository;
     private final BoardRepository boardRepository;
+    private final CommentRepository commentRepository;
 
 
     // 게시판 목록 조회
@@ -54,7 +58,8 @@ public class BoardServiceImpl implements BoardService {
             boardRepository.findAllBoardList
                 (userId, listBoard.getBoardTitle(), listBoard.getNickName(), pageable) :
             boardRepository.findBoardList(
-                userId, listBoard.getCategoryId(), listBoard.getBoardTitle(), listBoard.getNickName(), pageable);
+                userId, listBoard.getCategoryId(), listBoard.getBoardTitle(),
+                listBoard.getNickName(), pageable);
 
         for (SearchList board : boardList) {
 
@@ -73,7 +78,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
 
-    // 게시판 내용 조회
+    // 게시판 내용, 댓글 조회
     public SearchContentBoard searchContentBoard(Long userId, ContentBoard contentBoard) {
 
         Category category = categoryRepository.findByCategoryId(contentBoard.getCategoryId())
@@ -88,6 +93,23 @@ public class BoardServiceImpl implements BoardService {
             throw new GlobalException(CLOSED_BOARD);
         }
 
+        List<CommentDto> commentDto = new ArrayList<>();
+
+        Pageable pageable = PageRequest.of(0, 50);
+
+        for (Comment comment : commentRepository.findByBoard_BoardId(contentBoard.getBoardId(),
+            pageable)) {
+            CommentDto commentContent = CommentDto.builder()
+                .commentId(comment.getCommentId())
+                .commentContent(comment.getCommentContent())
+                .userId(comment.getUser().getUserId())
+                .userNickName(comment.getUser().getUserNickName())
+                .createDate(comment.getCreateDate())
+                .build();
+
+            commentDto.add(commentContent);
+        }
+
         return BoardDto.SearchContentBoard.builder()
             .userId(user.getUserId())
             .userNickName(user.getUserNickName())
@@ -97,6 +119,7 @@ public class BoardServiceImpl implements BoardService {
             .boardTitle(board.getBoardTitle())
             .boardContent(board.getBoardContent())
             .createDate(board.getCreateDate())
+            .commentDto(commentDto)
             .build();
     }
 
