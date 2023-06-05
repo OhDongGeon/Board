@@ -15,7 +15,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 @RequiredArgsConstructor
 @WebFilter(urlPatterns = {
-    "/rankup/add/*", "/rankup/modify/*", "/rankup/delete/*",
+    "/rankup/add/*", "/rankup/modify/*", "/rankup/delete/*", "/rankup/user/*",
     "/category/add/*", "/category/modify/*", "/category/delete/*",
     "/board/*"
 })

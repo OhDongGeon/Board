@@ -25,6 +25,6 @@ POST http://localhost:8080/signin
 Content-Type: application/json
 
 {
-  "loginId": "ohdonggeon2",
+  "loginId": "administrator",
   "userPassword": "abcdefgh1!"
 }

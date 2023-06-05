@@ -21,6 +21,7 @@ import com.example.board.domain.repository.UserRepository;
 import com.example.board.exception.GlobalException;
 import com.example.board.service.BoardService;
 import com.example.board.service.CommentService;
+import com.example.board.service.RankUpService;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +35,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class CommentServiceImpl implements CommentService {
 
+    private final RankUpService rankUpService;
     private final BoardService boardService;
     private final UserRepository userRepository;
     private final BoardRepository boardRepository;
@@ -107,6 +109,9 @@ public class CommentServiceImpl implements CommentService {
 
         user.getComments().add(comment);
         board.getComments().add(comment);
+
+        // 자동 등급 업
+        rankUpService.autoUserRankUp(user);
 
         SearchComment searchComment = SearchComment.builder()
             .commentId(comment.getCommentId()).build();

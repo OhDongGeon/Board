@@ -6,25 +6,25 @@ Content-Type: application/json
 ### 등업 기준 저장
 POST http://localhost:8080/rankup
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1NTk3MzMyLCJleHAiOjE2ODU2ODM3MzJ9.vSR4__eli69y68iHQn99U67Me6YXefyLAbPYR9Vl-TkLdWg5SoXe9P1jnI_XEgLjXg9xhhzsi3XDhUJAl-u4xQ
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1ODkyOTM1LCJleHAiOjE2ODU5NzkzMzV9.WOGpjdD8LRTVY3xxHNIjdY-buLD1Zebp8rMnEdCGu5iWUpO2hppEpY5i4nea_gUccb5uNhkH1W9NArZKMm9peg
 
 {
-  "rankName": "LEVEL3",
-  "boardCount": 10,
-  "commentCount": 10,
-  "autoRankUpFlag": false
+  "rankName": "LEVEL2",
+  "boardCount": 2,
+  "commentCount": 5,
+  "autoRankUpFlag": true
 }
 
 
 ### 등업 기준 수정
-PUT http://localhost:8080/rankup/1
+PUT http://localhost:8080/rankup/5
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1NTk2MjcxLCJleHAiOjE2ODU2ODI2NzF9.IcttuhlnGpb6C3orDNX4hSwuwsJSGlCNlwOPheoQfY-2TOwkekxW1BfehIWT06Gty98ft6rwO8qczfoQP9jLVQ
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1ODkyOTM1LCJleHAiOjE2ODU5NzkzMzV9.WOGpjdD8LRTVY3xxHNIjdY-buLD1Zebp8rMnEdCGu5iWUpO2hppEpY5i4nea_gUccb5uNhkH1W9NArZKMm9peg
 
 {
-  "boardCount": 0,
-  "commentCount": 0,
-  "autoRankUpFlag": true
+  "boardCount": 6,
+  "commentCount": 7,
+  "autoRankUpFlag": false
 }
 
 

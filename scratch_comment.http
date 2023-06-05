@@ -1,10 +1,7 @@
-
-
-
 ### 댓글 저장
 POST http://localhost:8080/board/content/1
 Content-Type: application/json
-USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJ1WXVtTmUxSHlCR2hHRVFubXEvYVN3PT0iLCJzdWIiOiJlbWhSYWNpbFRSNFRlTTJyQ3B2Wml3PT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTg2Mzg2NiwiZXhwIjoxNjg1OTUwMjY2fQ.COMxWfUtB3LEIwKTldMPgk_jPnXsJS-SwvkWiDBCSQ61MdjBG1p-Mcx9T_roDftqffsDNpaU45LndV51K-I7Cg
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJCc1hpbUpGQVRBbWwvYzhVdkF1KzB3PT0iLCJzdWIiOiI2RzZzeThTZVZBS0xseithNEN0RlJnPT0iLCJyb2xlcyI6IkxFVkVMMSIsImlhdCI6MTY4NTg5NDIzOCwiZXhwIjoxNjg1OTgwNjM4fQ.eBuhIRcmhcFV6P5t-ACr8RVqoyZ2sSUcobM3RlNT5J6Bh8EBi3Ey3wztEKszCpuiEIRrO9lSONvEmNf8AuM6Dg
 
 {
   "commentContent": "아따마 박자감이 쩔어버리구먼유!"

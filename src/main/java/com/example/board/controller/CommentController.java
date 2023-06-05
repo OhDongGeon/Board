@@ -2,14 +2,12 @@ package com.example.board.controller;
 
 import com.example.board.domain.dto.BoardDto.SearchContentBoard;
 import com.example.board.domain.form.CommentForm.MergeComment;
-import com.example.board.domain.form.CommentForm.SearchComment;
 import com.example.board.security.TokenProvider;
 import com.example.board.service.CommentService;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;

@@ -1,0 +1,14 @@
+### 등급업 조회
+GET http://localhost:8080/rankup/user
+Content-Type: application/json
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1OTAxOTYxLCJleHAiOjE2ODU5ODgzNjF9.KV-t71cQWtZxSuNyKqywcvNtmGrl8AwI3ll7YyAiHyxHyNuW_3QOvgZxS3g-IKJwMq7Fs3gxcVRpPUqfStor4w
+
+
+### 등급업
+PUT http://localhost:8080/rankup/user/2
+Content-Type: application/json
+USER_TOKEN_HEADER: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJFc2hIUnZsbHk1SitpeDEwLzJTWGxRPT0iLCJzdWIiOiJwdjVwQzNUOElkQTd3UncvbFZLcE13PT0iLCJyb2xlcyI6IkFETUlOIiwiaWF0IjoxNjg1OTAxOTYxLCJleHAiOjE2ODU5ODgzNjF9.KV-t71cQWtZxSuNyKqywcvNtmGrl8AwI3ll7YyAiHyxHyNuW_3QOvgZxS3g-IKJwMq7Fs3gxcVRpPUqfStor4w
+
+{
+  "nextRank": "LEVEL2"
+}
