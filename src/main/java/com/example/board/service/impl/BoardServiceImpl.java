@@ -26,6 +26,7 @@ import com.example.board.domain.repository.UserRepository;
 import com.example.board.domain.type.RankType;
 import com.example.board.exception.GlobalException;
 import com.example.board.service.BoardService;
+import com.example.board.service.RankUpService;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -40,6 +41,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class BoardServiceImpl implements BoardService {
 
+    private final RankUpService rankUpService;
     private final UserRepository userRepository;
     private final CategoryRepository categoryRepository;
     private final BoardRepository boardRepository;
@@ -140,6 +142,9 @@ public class BoardServiceImpl implements BoardService {
 
         user.getBoards().add(board);
         category.getBoards().add(board);
+
+        // 자동 등급 업
+        rankUpService.autoUserRankUp(user);
 
         ContentBoard contentBoard = ContentBoard.builder()
             .categoryId(category.getCategoryId())
